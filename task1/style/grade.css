@@ -41,6 +41,7 @@ input,
 button {
     display: block;
     margin-bottom: 15px;
+    width: 160px;
 }
 
 input {

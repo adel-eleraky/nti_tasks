@@ -52,15 +52,15 @@
     <div class="container">
         <form action="" method="POST">
             <label for="">math</label>
-            <input type="number" name="math" required placeholder="enter math degree">
+            <input type="number" name="math" required placeholder="enter math degree" max="100" min="0">
             <label for="">physics</label>
-            <input type="number" name="physics" required placeholder="enter physics degree">
+            <input type=" number" name="physics" required placeholder="enter physics degree" max="100" min="0">
             <label for="">chemistry</label>
-            <input type="number" name="chemistry" required placeholder="enter chemistry degree">
+            <input type="number" name="chemistry" required placeholder="enter chemistry degree" max="100" min="0">
             <label for="">biology</label>
-            <input type="number" name="biology" required placeholder="enter biology degree">
+            <input type="number" name="biology" required placeholder="enter biology degree" max="100" min="0">
             <label for="">computer</label>
-            <input type="number" name="computer" required placeholder="enter computer degree">
+            <input type="number" name="computer" required placeholder="enter computer degree" max="100" min="0">
             <button>calculate</button>
         </form>
         <?php  
