@@ -11,6 +11,10 @@ use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\ProductController;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Http\Request;
+
+
 
 Route::middleware('guest')->group(function () {
     Route::get('register', [RegisteredUserController::class, 'create'])
@@ -36,6 +40,31 @@ Route::middleware('guest')->group(function () {
                 ->name('password.update');
 });
 
+
+
+Route::get('/email/verify', function () {
+    return view('auth.verify-email');
+})->middleware('auth')->name('verification.notice');
+
+
+
+
+ 
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill();
+ 
+    return redirect('/home');
+})->middleware(['auth', 'signed'])->name('verification.verify');
+
+ 
+Route::post('/email/verification-notification', function (Request $request) {
+    $request->user()->sendEmailVerificationNotification();
+ 
+    return back()->with('message', 'Verification link sent!');
+})->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+
+
+
 Route::middleware('auth')->group(function () {
     Route::get('verify-email', [EmailVerificationPromptController::class, '__invoke'])
                 ->name('verification.notice');
@@ -56,5 +85,15 @@ Route::middleware('auth')->group(function () {
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
                 ->name('logout');
 
+    Route::controller(ProductController::class)->prefix('dashboard')->name('dashboard.')->middleware('auth' ,'verified')->group(function(){
 
+        Route::prefix('products')->name('products.')->controller(ProductController::class)->group(function(){
+            Route::get('/' ,  'get')->name('get');
+            Route::get('/edit/{id}' ,  'edit' )->name('edit');
+            Route::delete('/delete/{id}' ,'delete' )->name('delete');
+            Route::put('/update/{id}' ,  'update' )->name('update');
+            Route::get('/create' , 'create' )->name('create');
+            Route::post('/store' ,  'store' )->name('store');
+        });
+    });
 });
