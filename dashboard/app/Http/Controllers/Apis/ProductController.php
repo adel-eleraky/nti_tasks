@@ -11,7 +11,7 @@ use App\Traits\Responses;
 
 class ProductController extends Controller
 {
-    // use Responses;
+    use Responses;
 
     public function index(){
 
@@ -25,8 +25,7 @@ class ProductController extends Controller
         foreach($products as $product){
             $product->image = asset('images/product/'.$product->image);
         }
-        // return $this->data(compact('products'));
-        return response()->json(compact('products'));
+        return $this->data(compact('products'));
     }
 
     public function edit($id){
@@ -36,16 +35,14 @@ class ProductController extends Controller
         $brands = Brand::all();
 
         $product->image = asset('images/product/'.$product->image);
-        // return $this->data(compact('product' ,'brands'));
-        return response()->json(compact('product' , 'brands'));
+        return $this->data(compact('product' ,'brands'));
 
     }
 
     public function create(){
 
         $brands = DB::table('brands')->select('id' ,'name_en')->get();
-        // return $this->data(compact('brands'));
-        return response()->json(compact('brands'));
+        return $this->data(compact('brands'));
 
     }
 
@@ -70,8 +67,6 @@ class ProductController extends Controller
 
         $data['image'] = $imageName;
         Product::create($data);
-        // return $this->success('product created');
-        return response()->json('product created');
 
 
     }
@@ -104,8 +99,7 @@ class ProductController extends Controller
 
         $data['image'] = $imageName;
         $product->update($data);
-        // return $this->success('product updated');
-        return response()->json('product updated');
+        return $this->success('product updated');
 
     }
 
@@ -117,8 +111,7 @@ class ProductController extends Controller
         }
         $product->delete();
 
-        // return $this->success('product deleted');
-        return response()->json('product deleted');
+        return $this->success('product deleted');
 
     }
 }
