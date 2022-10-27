@@ -88,7 +88,7 @@ $MostOrderedProducts = $Products->MostOrdered()->fetch_all(MYSQLI_ASSOC);
                                 <div class="col-3">
                                     <div class="product-wrapper mb-30">
                                         <div class="product-img">
-                                            <a href="product-details.php">
+                                            <a href="product-details.php?product=<?= $Product['id']?>">
                                                 <img alt="" src="assets/img/product/<?= $Product['image']?>">
                                             </a>
                                             <span>-30%</span>
@@ -146,7 +146,7 @@ $MostOrderedProducts = $Products->MostOrdered()->fetch_all(MYSQLI_ASSOC);
                                 <div class="col-3">
                                     <div class="product-wrapper mb-30">
                                         <div class="product-img">
-                                            <a href="product-details.php">
+                                            <a href="product-details.php?product=<?= $Product['id']?>">
                                                 <img alt="" src="assets/img/product/<?= $Product['image']?>">
                                             </a>
                                             <span>-30%</span>
