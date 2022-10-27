@@ -229,151 +229,151 @@ if(isset($_POST['submit']) and $_POST['submit'] == "add_review"){
                         </div>
                     </div>
                     <style>
-                        * {
-                            box-sizing: border-box;
-                        }
+                    * {
+                        box-sizing: border-box;
+                    }
 
 
 
-                        label {
-                            cursor: pointer;
-                        }
+                    label {
+                        cursor: pointer;
+                    }
 
-                        svg {
-                            width: 3rem;
-                            height: 3rem;
-                            padding: 0.15rem;
-                        }
-
-
-                        /* hide radio buttons */
-
-                        input[name="star"] {
-                            display: inline-block;
-                            width: 0;
-                            opacity: 0;
-                            margin-left: -2px;
-                        }
-
-                        /* hide source svg */
-
-                        .star-source {
-                            width: 0;
-                            height: 0;
-                            visibility: hidden;
-                        }
+                    svg {
+                        width: 3rem;
+                        height: 3rem;
+                        padding: 0.15rem;
+                    }
 
 
-                        /* set initial color to transparent so fill is empty*/
+                    /* hide radio buttons */
 
-                        .star {
-                            color: transparent;
-                            transition: color 0.2s ease-in-out;
-                        }
+                    input[name="star"] {
+                        display: inline-block;
+                        width: 0;
+                        opacity: 0;
+                        margin-left: -2px;
+                    }
+
+                    /* hide source svg */
+
+                    .star-source {
+                        width: 0;
+                        height: 0;
+                        visibility: hidden;
+                    }
 
 
-                        /* set direction to row-reverse so 5th star is at the end and ~ can be used to fill all sibling stars that precede last starred element*/
+                    /* set initial color to transparent so fill is empty*/
 
-                        .star-container {
-                            display: flex;
-                            flex-direction: row-reverse;
-                            justify-content: center;
-                        }
+                    .star {
+                        color: transparent;
+                        transition: color 0.2s ease-in-out;
+                    }
 
-                        label:hover~label .star,
-                        svg.star:hover,
-                        input[name="star"]:focus~label .star,
-                        input[name="star"]:checked~label .star {
-                            color: #d62a9d;
-                        }
 
-                        input[name="star"]:checked+label .star {
-                            animation: starred 0.5s;
-                        }
+                    /* set direction to row-reverse so 5th star is at the end and ~ can be used to fill all sibling stars that precede last starred element*/
 
-                        input[name="star"]:checked+label {
-                            animation: scaleup 1s;
-                        }
+                    .star-container {
+                        display: flex;
+                        flex-direction: row-reverse;
+                        justify-content: center;
+                    }
+
+                    label:hover~label .star,
+                    svg.star:hover,
+                    input[name="star"]:focus~label .star,
+                    input[name="star"]:checked~label .star {
+                        color: #d62a9d;
+                    }
+
+                    input[name="star"]:checked+label .star {
+                        animation: starred 0.5s;
+                    }
+
+                    input[name="star"]:checked+label {
+                        animation: scaleup 1s;
+                    }
                     </style>
                     <?php if(isset($_SESSION['user'])){ ?>
-                        <div class="ratting-form-wrapper">
-                            <h3>Add your Comments :</h3>
-                            <div class="ratting-form">
-                                <form method="POST">
-                                    <div class="star-box">
-                                        <h2>Rating:</h2>
-                                        <div class="ratting-star">
-                                            <div class="star-source">
-                                                <svg>
-                                                    <linearGradient x1="50%" y1="5.41294643%" x2="87.5527344%"
-                                                        y2="65.4921875%" id="grad">
-                                                        <stop stop-color="#bf209f" offset="0%"></stop>
-                                                        <stop stop-color="#d62a9d" offset="60%"></stop>
-                                                        <stop stop-color="#ED009E" offset="100%"></stop>
-                                                    </linearGradient>
-                                                    <symbol id="star" viewBox="153 89 106 108">
-                                                        <polygon id="star-shape" stroke="url(#grad)" stroke-width="5"
-                                                            fill="currentColor"
-                                                            points="206 162.5 176.610737 185.45085 189.356511 150.407797 158.447174 129.54915 195.713758 130.842203 206 95 216.286242 130.842203 253.552826 129.54915 222.643489 150.407797 235.389263 185.45085">
-                                                        </polygon>
-                                                    </symbol>
+                    <div class="ratting-form-wrapper">
+                        <h3>Add your Comments :</h3>
+                        <div class="ratting-form">
+                            <form method="POST">
+                                <div class="star-box">
+                                    <h2>Rating:</h2>
+                                    <div class="ratting-star">
+                                        <div class="star-source">
+                                            <svg>
+                                                <linearGradient x1="50%" y1="5.41294643%" x2="87.5527344%"
+                                                    y2="65.4921875%" id="grad">
+                                                    <stop stop-color="#bf209f" offset="0%"></stop>
+                                                    <stop stop-color="#d62a9d" offset="60%"></stop>
+                                                    <stop stop-color="#ED009E" offset="100%"></stop>
+                                                </linearGradient>
+                                                <symbol id="star" viewBox="153 89 106 108">
+                                                    <polygon id="star-shape" stroke="url(#grad)" stroke-width="5"
+                                                        fill="currentColor"
+                                                        points="206 162.5 176.610737 185.45085 189.356511 150.407797 158.447174 129.54915 195.713758 130.842203 206 95 216.286242 130.842203 253.552826 129.54915 222.643489 150.407797 235.389263 185.45085">
+                                                    </polygon>
+                                                </symbol>
+                                            </svg>
+
+                                        </div>
+                                        <div class="star-container">
+                                            <input type="radio" name="star" value="5" id="five">
+                                            <label for="five">
+                                                <svg class="star">
+                                                    <use xlink:href="#star" />
                                                 </svg>
+                                            </label>
+                                            <input type="radio" name="star" value="4" id="four">
+                                            <label for="four">
+                                                <svg class="star">
+                                                    <use xlink:href="#star" />
+                                                </svg>
+                                            </label>
+                                            <input type="radio" name="star" value="3" id="three">
+                                            <label for="three">
+                                                <svg class="star">
+                                                    <use xlink:href="#star" />
+                                                </svg>
+                                            </label>
+                                            <input type="radio" name="star" value="2" id="two">
+                                            <label for="two">
+                                                <svg class="star">
+                                                    <use xlink:href="#star" />
+                                                </svg>
+                                            </label>
+                                            <input type="radio" name="star" value="1" id="one">
+                                            <label for="one">
+                                                <svg class="star">
+                                                    <use xlink:href="#star" />
+                                                </svg>
+                                            </label>
 
-                                            </div>
-                                            <div class="star-container">
-                                                <input type="radio" name="star" value="5" id="five">
-                                                <label for="five">
-                                                    <svg class="star">
-                                                        <use xlink:href="#star" />
-                                                    </svg>
-                                                </label>
-                                                <input type="radio" name="star" value="4" id="four">
-                                                <label for="four">
-                                                    <svg class="star">
-                                                        <use xlink:href="#star" />
-                                                    </svg>
-                                                </label>
-                                                <input type="radio" name="star" value="3" id="three">
-                                                <label for="three">
-                                                    <svg class="star">
-                                                        <use xlink:href="#star" />
-                                                    </svg>
-                                                </label>
-                                                <input type="radio" name="star" value="2" id="two">
-                                                <label for="two">
-                                                    <svg class="star">
-                                                        <use xlink:href="#star" />
-                                                    </svg>
-                                                </label>
-                                                <input type="radio" name="star" value="1" id="one">
-                                                <label for="one">
-                                                    <svg class="star">
-                                                        <use xlink:href="#star" />
-                                                    </svg>
-                                                </label>
-
-                                            </div>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="rating-form-style mb-20">
-                                                <input placeholder="Name" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="rating-form-style form-submit">
-                                                <textarea name="message" placeholder="Message"></textarea>
-                                                <input type="submit" name="submit" value="add_review">
-                                            </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="rating-form-style mb-20">
+                                            <input placeholder="Name" type="text">
                                         </div>
                                     </div>
-                                </form>
-                            </div>
+                                    <div class="col-md-6">
+
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="rating-form-style form-submit">
+                                            <textarea name="message" placeholder="Message"></textarea>
+                                            <input type="submit" name="submit" value="add_review">
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
+                    </div>
                     <?php }?>
                 </div>
             </div>
